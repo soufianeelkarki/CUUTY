@@ -195,6 +195,7 @@ h6 {
     white-space: nowrap;
     margin: 0 5px;
     top: -18px;
+    left: 0;
   }
 }
 .navbar a,
