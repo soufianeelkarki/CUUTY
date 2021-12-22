@@ -146,7 +146,7 @@ h6 {
   line-height: 1;
   font-weight: 700;
   letter-spacing: 0.5px;
-  position: absolute;
+  /* position: absolute; */
   left: 0;
   top: 0;
 }
@@ -174,11 +174,12 @@ h6 {
   padding: 0;
 }
 .navbar ul {
-  margin: 0;
+  margin: 10px;
   padding: 0;
   display: flex;
   list-style: none;
-  align-items: center;
+  left: 40%;
+  position: absolute;
 }
 .navbar li {
   position: relative;
@@ -193,7 +194,7 @@ h6 {
     position: relative;
     white-space: nowrap;
     margin: 0 5px;
-    top: -20px;
+    top: -18px;
   }
 }
 .navbar a,
@@ -204,7 +205,7 @@ h6 {
   padding: 25px 3px;
   font-size: 14px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
+  color: #fff;
   white-space: nowrap;
   transition: 0.3s;
   position: relative;
