@@ -603,22 +603,22 @@ section {
 .about .content p:last-child {
   margin-bottom: 0;
 }
-@media (width: 360px) {
+@media (max-width: 414px) {
   .about p {
     width: 100%;
     font-size: 15px;
   }
 }
-@media (width: 412px) {
+@media (width: 375px) {
   .about p {
     width: 100%;
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 @media (width: 280px) {
   .about p {
     width: 100%;
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 
