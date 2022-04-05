@@ -1122,17 +1122,13 @@
             </div>
 
             <div class="col-lg-8 mt-5 mt-lg-0">
-              <form
-                action="forms/contact.php"
-                method="post"
-                role="form"
-                class="php-email-form"
-              >
+              <form action="sendEmail.php"  id="myForm" class="php-email-form">
                 <div class="row">
                   <div class="col-md-6 form-group">
+                    <label for="email">Your Name</label>
                     <input
                       type="text"
-                      name="name"
+                      
                       class="form-control"
                       id="name"
                       placeholder="Your Name"
@@ -1140,10 +1136,11 @@
                     />
                   </div>
                   <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <label for="email">Votre Email</label>
                     <input
                       type="email"
                       class="form-control"
-                      name="email"
+                      
                       id="email"
                       placeholder="Your Email"
                       required
@@ -1151,19 +1148,20 @@
                   </div>
                 </div>
                 <div class="form-group mt-3">
+                  <label for="email">Subject</label>
                   <input
                     type="text"
                     class="form-control"
-                    name="subject"
+                    
                     id="subject"
                     placeholder="Subject"
                     required
                   />
                 </div>
                 <div class="form-group mt-3">
+                  <label for="email">Message</label>
                   <textarea
                     class="form-control"
-                    name="message"
                     rows="5"
                     placeholder="Message"
                     required
@@ -1176,9 +1174,12 @@
                     Your message has been sent. Thank you!
                   </div>
                 </div>
+                
                 <div class="text-center">
-                  <button type="submit">Send Message</button>
-                </div>
+                  <button type="submit" onclick="sendEmail()">
+                    Send Message
+                  </button>
+              </div>
               </form>
             </div>
           </div>
@@ -1228,7 +1229,7 @@
                 </li>
                 <li>
                   <i class="bx bx-chevron-right"></i>
-                  <a href="#servises">Services</a>
+                  <a href="#services">Services</a>
                 </li>
                 <li>
                   <i class="bx bx-chevron-right"></i>
@@ -1312,6 +1313,46 @@
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script type="text/javascript">
+      function sendEmail() {
+        var name = $("#name");
+        var email = $("#email");
+        var subject = $("#subject");
+        var body = $("#body");
+
+        if (
+          isNotEmpty(name) &&
+          isNotEmpty(email) &&
+          isNotEmpty(subject) &&
+          isNotEmpty(body)
+        ) {
+          $.ajax({
+            url: "sendEmail.php",
+            method: "POST",
+            dataType: "json",
+            data: {
+              name: name.val(),
+              email: email.val(),
+              subject: subject.val(),
+              body: body.val(),
+            },
+            success: function (response) {
+              $("#myForm")[0].reset();
+              $(".sent-notification").text("Message Sent Successfully.");
+            },
+          });
+        }
+      }
+
+      function isNotEmpty(caller) {
+        if (caller.val() == "") {
+          caller.css("border", "1px solid red");
+          return false;
+        } else caller.css("border", "");
+
+        return true;
+      }
+    </script>
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
